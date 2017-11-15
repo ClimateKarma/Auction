@@ -23,7 +23,6 @@ public class AuctionSimulation {
     private static BiddingPrice payment;
 
     public static void main(String[] args) throws InterruptedException {
-//        TODO Scanner consoleInput = new Scanner(System.in);
 
         System.out.println("[ Starting auction ... ]");
         delay(shortDelay);
@@ -37,10 +36,7 @@ public class AuctionSimulation {
         delay(shortDelay);
         System.out.println("[ Bidders send their bids... ]");
         delay(shortDelay);
-/*        for (int i = 0; i < DEFAULT_BIDS.length; i++) {
-            System.out.println("Bid #" + (i+1) + ": ");
-            DEFAULT_BIDS[i] = consoleInput.nextLine();
-        }*/
+        getBidsFromConsole();
         System.out.println("[ Collecting bids... ]");
         for (int i = 0; i < DEFAULT_BIDS.length; i++) {
             System.out.println("Bid #" + (i+1) + ": " + DEFAULT_BIDS[i]);
@@ -69,15 +65,24 @@ public class AuctionSimulation {
         System.out.println("[ Closing the auction... ]");
     }
 
+    public static void delay(long delay) throws InterruptedException {
+        TimeUnit.MILLISECONDS.sleep(delay);
+    }
+
+    public static void getBidsFromConsole() {
+        // TODO
+/*        Scanner consoleInput = new Scanner(System.in);
+        for (int i = 0; i < bids.length; i++) {
+            System.out.println("Bid #" + (i+1) + ": ");
+            bids[i] = consoleInput.nextLine();
+        }*/
+    }
+
     private static int chooseWinningBidder(BiddingPrice[] bids) {
         return 2;
     }
 
     private static BiddingPrice calculatePayment(BiddingPrice[] bids) {
         return bids[0];
-    }
-
-    public static void delay(long delay) throws InterruptedException {
-        TimeUnit.MILLISECONDS.sleep(delay);
     }
 }

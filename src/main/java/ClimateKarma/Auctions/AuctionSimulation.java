@@ -27,10 +27,17 @@ public class AuctionSimulation {
 
         System.out.println("[ Starting auction ... ]");
         delay(SHORT_DELAY);
-        System.out.println("[ Type of auction: Vickrey's Second Price ... ]");
+        System.out.println("[ Type of auction: ]");
+        delay(SHORT_DELAY);
+        System.out.println("[ * Second Price   ]");
+        delay(SHORT_DELAY);
+        System.out.println("[ * 1 seller       ]");
+        delay(SHORT_DELAY);
+        System.out.println("[ * " + bids.length + " seller       ]");
         delay(LONG_DELAY);
 
         System.out.println("[ Seller posts an offer... ]");
+        delay(SHORT_DELAY);
         System.out.println("Auctioned item: " + auctionedItem);
         delay(SHORT_DELAY);
         System.out.println("[ Auction House broadcasts the offer to bidders... ]");
@@ -61,6 +68,7 @@ public class AuctionSimulation {
         delay(LONG_DELAY);
 
         System.out.println("[ Closing the auction... ]");
+
     }
 
     public static void delay(long delay) throws InterruptedException {

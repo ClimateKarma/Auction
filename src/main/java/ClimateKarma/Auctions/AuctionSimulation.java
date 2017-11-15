@@ -1,7 +1,8 @@
 package ClimateKarma.Auctions;
 
 import ClimateKarma.Payments.BiddingPrice;
-import javafx.util.Pair;
+import ClimateKarma.Payments.BiddingPriceWithId;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
@@ -9,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import static ClimateKarma.Currencies.PaymentCurrencies.mBTC;
 
 public class AuctionSimulation {
-    final static long shortDelay = 600;
+    final static long shortDelay = 100;
     final static long longDelay = 3 * shortDelay;
     private static String auctionedItem = "80 Climate Drops, 50 Solar Coins, 100 Climate Coins";
 
@@ -82,13 +83,16 @@ public class AuctionSimulation {
     }
 
     private static int get1stLargest(BiddingPrice[] bids) {
-        Pair[] bidsWithIndices = new Pair[bids.length];
+        BiddingPriceWithId[] bidsWithIndices = new BiddingPriceWithId[bids.length];
         for (int i = 0; i < bids.length; i++) {
-            bidsWithIndices[i] = new Pair(bids[i].getAmount(), i);
+            bidsWithIndices[i] = new BiddingPriceWithId(bids[i].getAmount(), i);
         }
+//        Arrays.sort(bidsWithIndices, (p1, p2) -> p1.getKey().compareTo(p2.getKey()));
         Arrays.sort(bidsWithIndices);
+        ArrayUtils.reverse(bidsWithIndices);
         System.out.println(bidsWithIndices[0]);
         System.out.println(bidsWithIndices[1]);
+        System.out.println(bidsWithIndices[2]);
         return 2;
     }
 

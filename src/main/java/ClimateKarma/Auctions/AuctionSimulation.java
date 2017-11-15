@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit;
 import static ClimateKarma.Currencies.PaymentCurrencies.mBTC;
 
 public class AuctionSimulation {
-    final static long shortDelay = 100;
-    final static long longDelay = 3 * shortDelay;
+    private final static long SHORT_DELAY = 1500;
+    private final static long LONG_DELAY = 2 * SHORT_DELAY;
     private static String auctionedItem = "80 Climate Drops, 50 Solar Coins, 100 Climate Coins";
 
     private static final BiddingPrice[] DEFAULT_BIDS = new BiddingPrice[]{
@@ -26,39 +26,39 @@ public class AuctionSimulation {
     public static void main(String[] args) throws InterruptedException {
 
         System.out.println("[ Starting auction ... ]");
-        delay(shortDelay);
+        delay(SHORT_DELAY);
         System.out.println("[ Type of auction: Vickrey's Second Price ... ]");
-        delay(longDelay);
+        delay(LONG_DELAY);
 
         System.out.println("[ Seller posts an offer... ]");
         System.out.println("Auctioned item: " + auctionedItem);
-        delay(shortDelay);
+        delay(SHORT_DELAY);
         System.out.println("[ Auction House broadcasts the offer to bidders... ]");
-        delay(shortDelay);
+        delay(SHORT_DELAY);
         System.out.println("[ Bidders send their bids... ]");
-        delay(shortDelay);
+        delay(SHORT_DELAY);
         getBidsFromConsole();
         System.out.println("[ Collecting bids... ]");
         displayBids(bids);
-        delay(shortDelay);
+        delay(SHORT_DELAY);
         System.out.println("[ Choosing the winning bid... ]");
         winningBidder = chooseWinningBidder(bids);
-        delay(longDelay);
+        delay(LONG_DELAY);
         System.out.println("The winner is bidder #" + winningBidder + ".");
-        delay(shortDelay);
+        delay(SHORT_DELAY);
         System.out.println("[ Calculating the payment... ]");
         payment = calculatePayment(bids);
-        delay(longDelay);
+        delay(LONG_DELAY);
         System.out.println("The payment will be " + payment + ".");
-        delay(shortDelay);
+        delay(SHORT_DELAY);
         System.out.println("[ Announcing the results of the auction... ]");
-        delay(shortDelay);
+        delay(SHORT_DELAY);
         System.out.println("[ Connecting the seller and the buyer (the winning bidder)... ]");
-        delay(shortDelay);
+        delay(SHORT_DELAY);
         System.out.println("[ Transferring the assets... ]");
-        delay(longDelay);
+        delay(LONG_DELAY);
         System.out.println("[ Executing the payment... ]");
-        delay(longDelay);
+        delay(LONG_DELAY);
 
         System.out.println("[ Closing the auction... ]");
     }
@@ -106,7 +106,7 @@ public class AuctionSimulation {
     private static void displayBids(BiddingPrice[] bids) throws InterruptedException {
         for (int i = 0; i < bids.length; i++) {
             System.out.println("Bid #" + (i+1) + ": " + bids[i]);
-            delay(shortDelay);
+            delay(SHORT_DELAY);
         }
     }
 

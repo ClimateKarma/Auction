@@ -77,8 +77,7 @@ public class AuctionSimulation {
     }
 
     private static int chooseWinningBidder(BiddingPrice[] bids) throws InterruptedException {
-        int winningIndex = get1stLargest(bids);
-//        displayBids(bids);
+        int winningIndex = getHighestBidder(bids);
         return winningIndex;
     }
 
@@ -93,9 +92,15 @@ public class AuctionSimulation {
         return bidsWithIndices;
     }
 
-    private static int get1stLargest(BiddingPrice[] bids) {
+    private static int getHighestBidder(BiddingPrice[] bids) {
         BiddingPriceWithId[] sortedBidsWithIndices = sortBidsDecreasingly(bids);
-        return sortedBidsWithIndices[0].IdOfBidder;
+        return sortedBidsWithIndices[0].idOfBidder;
+    }
+
+    private static Double get2ndHighestBid(BiddingPrice[] bids) {
+        BiddingPriceWithId[] sortedBidsWithIndices = sortBidsDecreasingly(bids);
+        int secondIndex = (bids.length > 1 ? 1 : 0);
+        return sortedBidsWithIndices[secondIndex].priceValue;
     }
 
     private static void displayBids(BiddingPrice[] bids) throws InterruptedException {
@@ -106,6 +111,7 @@ public class AuctionSimulation {
     }
 
     private static BiddingPrice calculatePayment(BiddingPrice[] bids) {
-        return bids[0];
+        Double bid = get2ndHighestBid(bids);
+        return new BiddingPrice(bid, bids[0].getCurrency());
     }
 }

@@ -13,17 +13,19 @@ public class AuctionSimulation {
 
     public static void main(String[] args) throws InterruptedException {
 
-        System.out.println("[ Simulating auction... ]");
+        System.out.println("[ Starting auction ... ]");
+        delay(shortDelay);
+        System.out.println("[ Type of auction: Vickrey's Second Price ... ]");
         delay(longDelay);
 
-        System.out.println("[ Generating an auction... ]");
-        delay(shortDelay);
-        System.out.println("[ Seller posting an offer... ]");
+//        System.out.println("[ Generating an auction... ]");
+//        delay(shortDelay);
+        System.out.println("[ Seller posts an offer... ]");
         System.out.println("Auctioned item: " + auctionedItem);
         delay(shortDelay);
-        System.out.println("[ Auction House broadcasting the offer to bidders... ]");
+        System.out.println("[ Auction House broadcasts the offer to bidders... ]");
         delay(shortDelay);
-        System.out.println("[ Bidders posting their bids... ]");
+        System.out.println("[ Bidders post their bids... ]");
         for (int i = 0; i < bids.length; i++) {
             System.out.println("Bid #" + (i+1) + ": " + bids[i]);
             delay(shortDelay);
@@ -48,7 +50,7 @@ public class AuctionSimulation {
         System.out.println("[ Executing the payment... ]");
         delay(longDelay);
 
-        System.out.println("[ Auction finished ]");
+        System.out.println("[ Closing the auction... ]");
     }
 
     public static void delay(long delay) throws InterruptedException {

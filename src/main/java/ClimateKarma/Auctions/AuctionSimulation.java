@@ -45,6 +45,7 @@ public class AuctionSimulation {
         delay(shortDelay);
         System.out.println("[ Calculating the payment... ]");
         delay(longDelay);
+        payment = calculatePayment(bids);
         System.out.println("The payment will be " + payment + ".");
         delay(shortDelay);
         System.out.println("[ Announcing the results of the auction... ]");
@@ -61,6 +62,10 @@ public class AuctionSimulation {
 
     private static int chooseWinningBidder(String[] bids) {
         return 2;
+    }
+
+    private static String calculatePayment(String[] bids) {
+        return bids[0];
     }
 
     public static void delay(long delay) throws InterruptedException {

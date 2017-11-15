@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 public class AuctionSimulation {
     final static long shortDelay = 400;
     final static long longDelay = 2 * shortDelay;
+    private static String auctionedItem = "50 Climate Drops, 100 Solar Coins, 20 Carbon Credits";
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -14,6 +15,7 @@ public class AuctionSimulation {
         System.out.println("[ Generating an auction... ]");
         delay(shortDelay);
         System.out.println("[ Seller posting an offer... ]");
+        System.out.println("Auctioned item: " + auctionedItem);
         delay(shortDelay);
         System.out.println("[ Auctioneer broadcasting the offer to bidders... ]");
         delay(shortDelay);

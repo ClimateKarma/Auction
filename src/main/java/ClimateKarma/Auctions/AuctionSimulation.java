@@ -11,12 +11,14 @@ public class AuctionSimulation {
     final static long shortDelay = 100;
     final static long longDelay = 2 * shortDelay;
     private static String auctionedItem = "80 Climate Drops, 50 Solar Coins, 100 Climate Coins";
-    private static String[] defaultBids = new String[]{"1 mBTC", "0.5 mBTC", "2 mBTC"};
-    private static BiddingPrice[] bids = new BiddingPrice[]{
+
+    // TODO
+    private static final BiddingPrice[] DEFAULT_BIDS = new BiddingPrice[]{
             new BiddingPrice(1, mBTC),
             new BiddingPrice(0.5, mBTC),
             new BiddingPrice(2, mBTC),
     };
+    private static BiddingPrice[] bids = DEFAULT_BIDS;
     private static int winningBidder;
     private static BiddingPrice payment;
 
@@ -33,20 +35,20 @@ public class AuctionSimulation {
         delay(shortDelay);
         System.out.println("[ Auction House broadcasts the offer to bidders... ]");
         delay(shortDelay);
-        System.out.println("[ Bidders send their defaultBids... ]");
+        System.out.println("[ Bidders send their bids... ]");
         delay(shortDelay);
-/*        for (int i = 0; i < defaultBids.length; i++) {
+/*        for (int i = 0; i < DEFAULT_BIDS.length; i++) {
             System.out.println("Bid #" + (i+1) + ": ");
-            defaultBids[i] = consoleInput.nextLine();
+            DEFAULT_BIDS[i] = consoleInput.nextLine();
         }*/
-        System.out.println("[ Collecting defaultBids... ]");
-        for (int i = 0; i < defaultBids.length; i++) {
-            System.out.println("Bid #" + (i+1) + ": " + defaultBids[i]);
+        System.out.println("[ Collecting bids... ]");
+        for (int i = 0; i < DEFAULT_BIDS.length; i++) {
+            System.out.println("Bid #" + (i+1) + ": " + DEFAULT_BIDS[i]);
             delay(shortDelay);
         }
         delay(shortDelay);
         System.out.println("[ Choosing the winning bid... ]");
-        winningBidder = chooseWinningBidder(defaultBids);
+        winningBidder = chooseWinningBidder(bids);
         delay(longDelay);
         System.out.println("The winner is bidder #" + winningBidder + ".");
         delay(shortDelay);
@@ -67,7 +69,7 @@ public class AuctionSimulation {
         System.out.println("[ Closing the auction... ]");
     }
 
-    private static int chooseWinningBidder(String[] bids) {
+    private static int chooseWinningBidder(BiddingPrice[] bids) {
         return 2;
     }
 

@@ -23,7 +23,6 @@ hs_err_pid*
 .gradle/
 .idea/
 gradle/
-gradlew
 gradlew.bat
 Auction.iml
 Auction.ipr

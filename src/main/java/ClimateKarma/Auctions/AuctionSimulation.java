@@ -18,7 +18,7 @@ public class AuctionSimulation {
             new BiddingPrice(2, mBTC),
     };
     private static int winningBidder;
-    private static String payment = defaultBids[0];
+    private static BiddingPrice payment;
 
     public static void main(String[] args) throws InterruptedException {
 //        TODO Scanner consoleInput = new Scanner(System.in);
@@ -28,8 +28,6 @@ public class AuctionSimulation {
         System.out.println("[ Type of auction: Vickrey's Second Price ... ]");
         delay(longDelay);
 
-//        System.out.println("[ Generating an auction... ]");
-//        delay(shortDelay);
         System.out.println("[ Seller posts an offer... ]");
         System.out.println("Auctioned item: " + auctionedItem);
         delay(shortDelay);
@@ -53,7 +51,7 @@ public class AuctionSimulation {
         System.out.println("The winner is bidder #" + winningBidder + ".");
         delay(shortDelay);
         System.out.println("[ Calculating the payment... ]");
-        payment = calculatePayment(defaultBids);
+        payment = calculatePayment(bids);
         delay(longDelay);
         System.out.println("The payment will be " + payment + ".");
         delay(shortDelay);
@@ -73,7 +71,7 @@ public class AuctionSimulation {
         return 2;
     }
 
-    private static String calculatePayment(String[] bids) {
+    private static BiddingPrice calculatePayment(BiddingPrice[] bids) {
         return bids[0];
     }
 

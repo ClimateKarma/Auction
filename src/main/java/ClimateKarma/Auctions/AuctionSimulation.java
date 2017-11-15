@@ -6,7 +6,7 @@ public class AuctionSimulation {
     // TODO final static long shortDelay = 400;
     final static long shortDelay = 100;
     final static long longDelay = 2 * shortDelay;
-    private static String auctionedItem = "50 Climate Drops, 100 Solar Coins, 20 Carbon Credits";
+    private static String auctionedItem = "80 Climate Drops, 50 Solar Coins, 100 Climate Coins";
     private static String[] bids = new String[]{"1 mBTC", "0.5 mBTC", "2 mBTC"};
     private static int winningBidder;
     private static String payment = bids[0];
@@ -39,13 +39,13 @@ public class AuctionSimulation {
         }
         delay(shortDelay);
         System.out.println("[ Choosing the winning bid... ]");
-        delay(longDelay);
         winningBidder = chooseWinningBidder(bids);
+        delay(longDelay);
         System.out.println("The winner is bidder #" + winningBidder + ".");
         delay(shortDelay);
         System.out.println("[ Calculating the payment... ]");
-        delay(longDelay);
         payment = calculatePayment(bids);
+        delay(longDelay);
         System.out.println("The payment will be " + payment + ".");
         delay(shortDelay);
         System.out.println("[ Announcing the results of the auction... ]");

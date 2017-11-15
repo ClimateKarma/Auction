@@ -2,11 +2,11 @@ package ClimateKarma.Payments;
 
 public class BiddingPriceWithId implements Comparable<BiddingPriceWithId> {
     public final Double priceValue;
-    public final int IdOfBidder;
+    public final int idOfBidder;
 
     public BiddingPriceWithId(double priceValue, int IdOfBidder) {
         this.priceValue = priceValue;
-        this.IdOfBidder = IdOfBidder;
+        this.idOfBidder = IdOfBidder;
     }
 
     @Override
@@ -16,6 +16,6 @@ public class BiddingPriceWithId implements Comparable<BiddingPriceWithId> {
 
     @Override
     public String toString() {
-        return "bidder #" + IdOfBidder + " with bid " + priceValue;
+        return "bidder #" + idOfBidder + " with bid " + priceValue;
     }
 }

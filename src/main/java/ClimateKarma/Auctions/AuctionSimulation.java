@@ -12,6 +12,7 @@ public class AuctionSimulation {
     private static String payment = bids[0];
 
     public static void main(String[] args) throws InterruptedException {
+//        TODO Scanner consoleInput = new Scanner(System.in);
 
         System.out.println("[ Starting auction ... ]");
         delay(shortDelay);
@@ -25,13 +26,17 @@ public class AuctionSimulation {
         delay(shortDelay);
         System.out.println("[ Auction House broadcasts the offer to bidders... ]");
         delay(shortDelay);
-        System.out.println("[ Bidders post their bids... ]");
+        System.out.println("[ Bidders send their bids... ]");
+        delay(shortDelay);
+/*        for (int i = 0; i < bids.length; i++) {
+            System.out.println("Bid #" + (i+1) + ": ");
+            bids[i] = consoleInput.nextLine();
+        }*/
+        System.out.println("[ Collecting bids... ]");
         for (int i = 0; i < bids.length; i++) {
             System.out.println("Bid #" + (i+1) + ": " + bids[i]);
             delay(shortDelay);
         }
-        delay(shortDelay);
-        System.out.println("[ Collecting bids... ]");
         delay(shortDelay);
         System.out.println("[ Choosing the winning bid... ]");
         delay(longDelay);

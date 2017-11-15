@@ -3,9 +3,11 @@ package ClimateKarma.Auctions;
 import java.util.concurrent.TimeUnit;
 
 public class AuctionSimulation {
-    final static long shortDelay = 400;
+    // TODO final static long shortDelay = 400;
+    final static long shortDelay = 100;
     final static long longDelay = 2 * shortDelay;
     private static String auctionedItem = "50 Climate Drops, 100 Solar Coins, 20 Carbon Credits";
+    private static String[] bids = new String[]{"1 mBTC", "0.5 mBTC", "2 mBTC"};
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -17,9 +19,13 @@ public class AuctionSimulation {
         System.out.println("[ Seller posting an offer... ]");
         System.out.println("Auctioned item: " + auctionedItem);
         delay(shortDelay);
-        System.out.println("[ Auctioneer broadcasting the offer to bidders... ]");
+        System.out.println("[ Auction House broadcasting the offer to bidders... ]");
         delay(shortDelay);
         System.out.println("[ Bidders posting their bids... ]");
+        for (int i = 0; i < bids.length; i++) {
+            System.out.println("Bid #" + (i+1) + ": " + bids[i]);
+            delay(shortDelay);
+        }
         delay(shortDelay);
         System.out.println("[ Collecting bids... ]");
         delay(shortDelay);

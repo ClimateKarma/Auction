@@ -82,18 +82,20 @@ public class AuctionSimulation {
         return winningIndex;
     }
 
-    private static int get1stLargest(BiddingPrice[] bids) {
-        BiddingPriceWithId[] bidsWithIndices = new BiddingPriceWithId[bids.length];
-        for (int i = 0; i < bids.length; i++) {
+    private static BiddingPriceWithId[] sortBidsDecreasingly(BiddingPrice[] bids) {
+        int numberOfBids = bids.length;
+        BiddingPriceWithId[] bidsWithIndices = new BiddingPriceWithId[numberOfBids];
+        for (int i = 0; i < numberOfBids; i++) {
             bidsWithIndices[i] = new BiddingPriceWithId(bids[i].getAmount(), i);
         }
-//        Arrays.sort(bidsWithIndices, (p1, p2) -> p1.getKey().compareTo(p2.getKey()));
         Arrays.sort(bidsWithIndices);
         ArrayUtils.reverse(bidsWithIndices);
-        System.out.println(bidsWithIndices[0]);
-        System.out.println(bidsWithIndices[1]);
-        System.out.println(bidsWithIndices[2]);
-        return 2;
+        return bidsWithIndices;
+    }
+
+    private static int get1stLargest(BiddingPrice[] bids) {
+        BiddingPriceWithId[] sortedBidsWithIndices = sortBidsDecreasingly(bids);
+        return sortedBidsWithIndices[0].IdOfBidder;
     }
 
     private static void displayBids(BiddingPrice[] bids) throws InterruptedException {

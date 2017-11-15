@@ -2,6 +2,7 @@ package ClimateKarma.Auctions;
 
 import ClimateKarma.Payments.BiddingPrice;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import static ClimateKarma.Currencies.PaymentCurrencies.mBTC;
@@ -12,7 +13,6 @@ public class AuctionSimulation {
     final static long longDelay = 2 * shortDelay;
     private static String auctionedItem = "80 Climate Drops, 50 Solar Coins, 100 Climate Coins";
 
-    // TODO
     private static final BiddingPrice[] DEFAULT_BIDS = new BiddingPrice[]{
             new BiddingPrice(1, mBTC),
             new BiddingPrice(0.5, mBTC),
@@ -38,10 +38,7 @@ public class AuctionSimulation {
         delay(shortDelay);
         getBidsFromConsole();
         System.out.println("[ Collecting bids... ]");
-        for (int i = 0; i < DEFAULT_BIDS.length; i++) {
-            System.out.println("Bid #" + (i+1) + ": " + DEFAULT_BIDS[i]);
-            delay(shortDelay);
-        }
+        displayBids(bids);
         delay(shortDelay);
         System.out.println("[ Choosing the winning bid... ]");
         winningBidder = chooseWinningBidder(bids);
@@ -78,8 +75,17 @@ public class AuctionSimulation {
         }*/
     }
 
-    private static int chooseWinningBidder(BiddingPrice[] bids) {
+    private static int chooseWinningBidder(BiddingPrice[] bids) throws InterruptedException {
+        Arrays.sort(bids);
+        displayBids(bids);
         return 2;
+    }
+
+    private static void displayBids(BiddingPrice[] bids) throws InterruptedException {
+        for (int i = 0; i < bids.length; i++) {
+            System.out.println("Bid #" + (i+1) + ": " + bids[i]);
+            delay(shortDelay);
+        }
     }
 
     private static BiddingPrice calculatePayment(BiddingPrice[] bids) {

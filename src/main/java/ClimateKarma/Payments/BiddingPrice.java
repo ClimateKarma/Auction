@@ -2,8 +2,8 @@ package ClimateKarma.Payments;
 
 import ClimateKarma.Currencies.PaymentCurrencies;
 
-public class BiddingPrice {
-    double amount;
+public class BiddingPrice implements Comparable<BiddingPrice> {
+    Double amount;
     PaymentCurrencies currency;
 
     public BiddingPrice(double amount, PaymentCurrencies currency) {
@@ -30,5 +30,10 @@ public class BiddingPrice {
     @Override
     public String toString() {
         return amount + " " + currency.toString();
+    }
+
+    @Override
+    public int compareTo(BiddingPrice comparedPrice) {
+        return amount.compareTo(comparedPrice.amount);
     }
 }

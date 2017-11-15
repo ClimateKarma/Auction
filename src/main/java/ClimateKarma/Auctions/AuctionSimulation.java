@@ -8,6 +8,7 @@ public class AuctionSimulation {
     final static long longDelay = 2 * shortDelay;
     private static String auctionedItem = "50 Climate Drops, 100 Solar Coins, 20 Carbon Credits";
     private static String[] bids = new String[]{"1 mBTC", "0.5 mBTC", "2 mBTC"};
+    private static int winningBidder = 2;
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -30,8 +31,14 @@ public class AuctionSimulation {
         System.out.println("[ Collecting bids... ]");
         delay(shortDelay);
         System.out.println("[ Choosing the winning bid... ]");
+        delay(longDelay);
+        System.out.println("The winner is bidder #" + winningBidder + ".");
         delay(shortDelay);
         System.out.println("[ Calculating the payment... ]");
+//        delay(longDelay);
+//        System.out.println("The payment will be " + (winningBidder+1) + ".");
+        delay(shortDelay);
+        System.out.println("The winner is bidder #" + (winningBidder +1));
         delay(shortDelay);
         System.out.println("[ Announcing the results of the auction... ]");
         delay(shortDelay);

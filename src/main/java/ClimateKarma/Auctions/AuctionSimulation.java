@@ -1,15 +1,24 @@
 package ClimateKarma.Auctions;
 
+import ClimateKarma.Payments.BiddingPrice;
+
 import java.util.concurrent.TimeUnit;
+
+import static ClimateKarma.Currencies.PaymentCurrencies.mBTC;
 
 public class AuctionSimulation {
     // TODO final static long shortDelay = 400;
     final static long shortDelay = 100;
     final static long longDelay = 2 * shortDelay;
     private static String auctionedItem = "80 Climate Drops, 50 Solar Coins, 100 Climate Coins";
-    private static String[] bids = new String[]{"1 mBTC", "0.5 mBTC", "2 mBTC"};
+    private static String[] defaultBids = new String[]{"1 mBTC", "0.5 mBTC", "2 mBTC"};
+    private static BiddingPrice[] bids = new BiddingPrice[]{
+            new BiddingPrice(1, mBTC),
+            new BiddingPrice(0.5, mBTC),
+            new BiddingPrice(2, mBTC),
+    };
     private static int winningBidder;
-    private static String payment = bids[0];
+    private static String payment = defaultBids[0];
 
     public static void main(String[] args) throws InterruptedException {
 //        TODO Scanner consoleInput = new Scanner(System.in);
@@ -26,25 +35,25 @@ public class AuctionSimulation {
         delay(shortDelay);
         System.out.println("[ Auction House broadcasts the offer to bidders... ]");
         delay(shortDelay);
-        System.out.println("[ Bidders send their bids... ]");
+        System.out.println("[ Bidders send their defaultBids... ]");
         delay(shortDelay);
-/*        for (int i = 0; i < bids.length; i++) {
+/*        for (int i = 0; i < defaultBids.length; i++) {
             System.out.println("Bid #" + (i+1) + ": ");
-            bids[i] = consoleInput.nextLine();
+            defaultBids[i] = consoleInput.nextLine();
         }*/
-        System.out.println("[ Collecting bids... ]");
-        for (int i = 0; i < bids.length; i++) {
-            System.out.println("Bid #" + (i+1) + ": " + bids[i]);
+        System.out.println("[ Collecting defaultBids... ]");
+        for (int i = 0; i < defaultBids.length; i++) {
+            System.out.println("Bid #" + (i+1) + ": " + defaultBids[i]);
             delay(shortDelay);
         }
         delay(shortDelay);
         System.out.println("[ Choosing the winning bid... ]");
-        winningBidder = chooseWinningBidder(bids);
+        winningBidder = chooseWinningBidder(defaultBids);
         delay(longDelay);
         System.out.println("The winner is bidder #" + winningBidder + ".");
         delay(shortDelay);
         System.out.println("[ Calculating the payment... ]");
-        payment = calculatePayment(bids);
+        payment = calculatePayment(defaultBids);
         delay(longDelay);
         System.out.println("The payment will be " + payment + ".");
         delay(shortDelay);

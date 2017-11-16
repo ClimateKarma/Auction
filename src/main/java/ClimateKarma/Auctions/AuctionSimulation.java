@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import static ClimateKarma.Currencies.PaymentCurrencies.mBTC;
 
 public class AuctionSimulation {
-    private final static long SHORT_DELAY = 1500;
+    private final static long SHORT_DELAY = 2500;
     private final static long LONG_DELAY = 2 * SHORT_DELAY;
     private static String auctionedItem = "80 Climate Drops, 50 Solar Coins, 100 Climate Coins";
 
@@ -25,43 +25,47 @@ public class AuctionSimulation {
 
     public static void main(String[] args) throws InterruptedException {
 
-        System.out.println("[ Starting auction ... ]");
+        System.out.println("[ Starting auction... ]");
         delay(SHORT_DELAY);
-        System.out.println("[ Type of auction: ]");
-        delay(SHORT_DELAY);
-        System.out.println("[ * Second Price   ]");
-        delay(SHORT_DELAY);
-        System.out.println("[ * 1 seller       ]");
-        delay(SHORT_DELAY);
-        System.out.println("[ * " + bids.length + " seller       ]");
+        System.out.println("[ Type of auction:    ]");
+//        delay(SHORT_DELAY);
+        System.out.println("[ * Second Price      ]");
+//        delay(SHORT_DELAY);
+        System.out.println("[ * 1 seller          ]");
+//        delay(SHORT_DELAY);
+        System.out.println("[ * " + bids.length + " bidders         ]");
         delay(LONG_DELAY);
 
         System.out.println("[ Seller posts an offer... ]");
         delay(SHORT_DELAY);
         System.out.println("Auctioned item: " + auctionedItem);
-        delay(SHORT_DELAY);
+        delay(LONG_DELAY);
         System.out.println("[ Auction House broadcasts the offer to bidders... ]");
-        delay(SHORT_DELAY);
+        delay(LONG_DELAY);
         System.out.println("[ Bidders send their bids... ]");
         delay(SHORT_DELAY);
         getBidsFromConsole();
         System.out.println("[ Collecting bids... ]");
+        System.out.println();
         displayBids(bids);
+        System.out.println();
         delay(SHORT_DELAY);
         System.out.println("[ Choosing the winning bid... ]");
         winningBidder = chooseWinningBidder(bids);
         delay(LONG_DELAY);
-        System.out.println("The winner is bidder #" + winningBidder + ".");
+        System.out.println("The winner is bidder #" + (winningBidder+1) + ".");
         delay(SHORT_DELAY);
         System.out.println("[ Calculating the payment... ]");
         payment = calculatePayment(bids);
         delay(LONG_DELAY);
         System.out.println("The payment will be " + payment + ".");
+        System.out.println();
         delay(SHORT_DELAY);
         System.out.println("[ Announcing the results of the auction... ]");
         delay(SHORT_DELAY);
         System.out.println("[ Connecting the seller and the buyer (the winning bidder)... ]");
-        delay(SHORT_DELAY);
+        System.out.println();
+        delay(LONG_DELAY);
         System.out.println("[ Transferring the assets... ]");
         delay(LONG_DELAY);
         System.out.println("[ Executing the payment... ]");
